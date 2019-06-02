@@ -1,0 +1,262 @@
+<!--
+find
+****
+image responsive
+button slanting edge left and right
+
+06-01-19
+********
+HOW TO START A WEB PROJECT
+float
+css selectors
+fonts
+bootstrap col
+flexbox
+how to see media query in inspect element
+image background
+how menu works and how to set-up mmenu
+
+
+
+
+
+HOW TO START A WEB PROJECT
+**************************
+1. START SMALL like study the header design how this is created, take a time to study the whole header if possible the whole day
+2. TRY TO CUSTOMIZE the design and make you copy
+3. DONT START NEW JUST COPY and CUSTOMIZE 
+4. CREATE that small thing immediately, so that you will not running out of time if times come
+
+
+image background
+****************
+- background: #294882 url(../images/bg-footer.jpg) repeat-x left bottom;
+
+ex1:	.header {
+		    background: url(../images/bg-pattern.png) repeat left top;
+		    position: relative;
+		}
+
+ex2: 	.header:before {
+		    content: '';
+		    position: absolute;
+		    left: 0;
+		    top: 0;
+		    width: 100%;
+		    height: 100%;
+		    background: url(../images/bg-head-overlay.png) repeat-x left bottom;
+		    opacity: 0.9;
+		}
+
+
+image responsive
+****************
+- max-width: 100%; height: auto;
+
+
+float
+*****
+text-align:center - mo align ang 'sulod' sa container
+
+css selectors
+*************
+.header .container - gitawag si .header meaning .container na naa sa header
+				   - use og mga parent na selectors para ma specific ang children
+				   - at least one parent then specific child
+				   - connect every parent of a child
+.footer p.copyright {  -  div footer, <p class="copyright">
+
+fonts
+*****
+- mag font-weight ka sa mga <a>, <span>, dili sa h1, h2
+
+bootstrap col
+*************
+note: - create only row kong mag column ka
+
+col-12 - default column for all sceen size like xs, sm, md, lg
+col-md-6 col-lg-4 - meaning inig md, mao ni iyang content, inig lg mao ni iyang content
+<div class="col-xs-3 col-md-3 col-lg-3"> - 3 col siya when lg, 3 col siya when md, 3 col siya if xs
+
+how to see media query in inspect element
+*****************************************
+- response the page to see the css in the inspect element
+
+how menu works
+**************
+- if width 911 na siya, run mmenu js thats why mogawas ang mmenu  
+
+- how to set-up mmenu: 
+//https://www.youtube.com/watch?v=75bMfM2gWKU
+
+1. wrap the ul and li with mmenu like
+<nav id="my-menu">
+	<ul>
+		<li></li>
+		<li></li>
+		<ul>
+			<li></li>
+			<li></li>
+		</ul>
+	</ul>
+</nav>
+
+2. add jquery.mmenu.min.js and jquery.mmenu.min.css link
+
+3. <script>
+	$(document).ready(function(){
+		$("#my-menu").menu();
+		var API = $("#my-menu").data("menu");
+
+		$("#menu-button").click(function(){
+			API.open();
+		});
+	});
+</script>
+
+4. create a button like
+<header><button id="menu-button">MENU</button></header>
+
+5. add jquery.mmenu.widescreen.css media="all and (min-width: 900px)" - if you want you mmenu to keep open, para  ni sa mga sub menu
+
+
+flexbox
+*******
+.flex-container {
+	display: flex; 						- display inline the content of the container
+	flex-direction: column; 			- display in first column
+	flex-direction: column-reverse; 	- display a column from last div to first div
+	flex-direction: row; or reverse
+	flex-wrap: wrap;					- same of display inline-block
+	flex-wrap: nowrap;					- display inline
+	flex-wrap: wrap-reverse;			- display inline-bliock but start from last div
+	flex-flow: row wrap;				- meaning ang row kay one line ra siya unya i wrap same with inline-block
+	justify-content: center;			- center the div
+	justify-content: flex-start; or end	- float left or display in start
+	justify-content: space-around;		- meaning naay black div or space left and right
+	justify-content: space-around; 		- ang display sa div kay left, center, and trigth ra space in between
+	align-items: center; 				- center the content from top and bottom
+	align-items: start; 				- center in height like place the div from top
+	align-items: end; 
+
+	height: 200px;
+	align-items: stretch;				- same of padding bottom
+	align-items: baseline;				- maening h1, h2, h3 i naay line sa ubos sa text of number or i tupong niya sa bottom
+
+	height: 600px;						
+	display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;		- space between row 600px
+    align-content: space-around;		- space row from top and bottom
+    align-content: stretch;				- space row from bottom only
+    align-content: center;				- center row in height
+    align-content: flex-start;			- place content from top of height
+    align-content: flex-end;			- place content from bottom of height
+
+    display: flex; 						-  center div and content from top, botton, left, and right
+  	justify-content: center;
+  	align-items: center;
+  	height: 300px;
+
+  	flex box order property
+  	***********************
+  	css - .flex-container {
+			display: flex;
+			align-items: stretch;
+		  }
+
+	html1 - <div class="flex-container"> 	 - i re-arrange niya ang div like 4 2 1 3 ang output
+			  <div style="order: 3">1</div>
+			  <div style="order: 2">2</div>
+			  <div style="order: 4">3</div> 
+			  <div style="order: 1">4</div>
+		   </div>
+
+	html2 - <div class="flex-container">
+			  <div style="flex-grow: 1">1</div>
+			  <div style="flex-grow: 1">2</div>
+			  <div style="flex-grow: 8">3</div>  - padding the div 8 times
+			</div>
+
+	html3 - <div class="flex-container">
+			  <div>1</div>
+			  <div>2</div>
+			  <div style="flex-shrink: 0">3</div> - expand this div
+			  <div>4</div>
+			  <div>5</div>
+			  <div>6</div>
+			  <div>7</div>
+			  <div>8</div>
+			  <div>9</div>
+			  <div>10</div>
+			</div>
+
+	html4 - <div class="flex-container">
+			  <div>1</div>
+			  <div>2</div>
+			  <div style="flex-basis:200px">3</div>
+			  <div>4</div>
+			</div>
+
+	html5 - <div class="flex-container">
+			  <div>1</div>
+			  <div>2</div>
+			  <div style="align-self: center">3</div> - center div in height
+			  <div>4</div>
+			</div>
+
+	html6 - <div class="flex-container">
+			  <div>1</div>
+			  <div style="align-self: flex-start">2</div> - center this from top
+			  <div style="align-self: flex-end">3</div>	  - center this from bottom
+			  <div>4</div>
+			</div>
+
+	.col-12 {flex: 0 0 100%;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
